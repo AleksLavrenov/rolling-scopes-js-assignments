@@ -22,7 +22,7 @@
  *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
-    throw new Error('Not implemented');
+    return width * height;
 }
 
 
@@ -39,6 +39,7 @@ function getRectangleArea(width, height) {
  */
 function getCicleCircumference(radius) {
     throw new Error('Not implemented');
+    // return 2 * 3.14 * radius;
 }
 
 /**
@@ -55,6 +56,7 @@ function getCicleCircumference(radius) {
  */
 function getAverage(value1, value2) {
     throw new Error('Not implemented');
+    // return (value1 + value2) / 2;
 }
 
 /**
