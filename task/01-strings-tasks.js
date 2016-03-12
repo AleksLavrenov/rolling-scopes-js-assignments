@@ -147,8 +147,8 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-    var str2 = str.replace(/>/, "");
-    return str2.replace(/</, "");
+    return str.replace(/<|>/g, "");
+    // return str.replace(/(<\/|>)|</g, "");
 }
 
 
@@ -227,7 +227,7 @@ function encodeToRot13(str) {
     return str.replace( /[A-Za-z]/g , function(c) {
     return String.fromCharCode( c.charCodeAt(0) + ( c.toUpperCase() <= "M" ? 13 : -13 ) );
   } );
-// from http://stackoverflow.com/questions/617647/where-is-my-one-line-implementation-of-rot13-in-javascript-going-wrong
+
 }
 
 /**
@@ -244,7 +244,11 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    throw new Error('Not implemented');
+    if (value instanceof String === true || typeof value === "string"){
+        return true;
+    } else{
+        return false;
+    }
 }
 
 
@@ -273,8 +277,23 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    throw new Error('Not implemented');
+    var str = "A234567891JQK";
+    var a = str.indexOf(value[0]);
+    var b = value[value.length - 1].charCodeAt();
+    switch (b) {
+       case 9827:
+          return a;
+       case 9830:
+          return a += 13;
+       case 9829:
+          return a += 26;
+       case 9824:
+          return a += 39;
+       default:
+          return false;
+    }
 }
+
 
 
 module.exports = {
