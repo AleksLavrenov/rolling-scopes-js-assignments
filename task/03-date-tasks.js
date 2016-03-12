@@ -57,7 +57,12 @@ function parseDataFromIso8601(value) {
  *    Date(2015,1,1)    => false
  */
 function isLeapYear(date) {
-   throw new Error('Not implemented');
+  var year = date.getFullYear();
+  if( (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0)) ){
+    return true;
+  } else{
+    return false;
+  }
 }
 
 
@@ -78,12 +83,18 @@ function isLeapYear(date) {
  */
 function timeSpanToString(startDate, endDate) {
     throw new Error('Not implemented');
-  // var dateDifference = startDate.getTime() - endDate.getTime(); // разница в мс
-  // return new Date(dateDifference);
-  // return remainsDate.getHours() + ":" + remainsDate.getMinutes() + ":" + remainsDate.getSeconds();
+    // var start = new Date(startDate);
+    // var end = new Date(endDate);
 
+    // var d = new Date(end.getTime() - start.getTime()).toISOString();
 
+    // var hh  = d.getHours().toString();
+    // var mm  = d.getMinutes().toString();
+    // var ss  = d.getSeconds().toString();
+    // var sss  = d.getMilliseconds().toString();
+    // return (hh[1]?hh:"0"+hh[0]) +":"+ (mm[1]?mm:"0"+mm[0]) +":"+ (ss[1]?ss:"0"+ss[0]) +"."+ (sss[2]?sss:sss[1]?"0"+sss[0]:"00"+sss[0]);
 
+    // d.toISOString().slice(0,10).replace(/-/g,"");
 
 }
 
