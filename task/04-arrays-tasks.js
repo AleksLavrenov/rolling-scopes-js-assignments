@@ -38,7 +38,10 @@ function findElement(arr, value) {
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
 function generateOdds(len) {
-   throw new Error('Not implemented');
+   var arr = Array.apply(null, Array(len)).map(function (_, i) {
+    return 2 * i + 1;
+  });
+   return arr;
 }
 
 
