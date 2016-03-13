@@ -86,7 +86,7 @@ function timeSpanToString(startDate, endDate) {
     // var start = new Date(startDate);
     // var end = new Date(endDate);
 
-    // var d = new Date(end.getTime() - start.getTime()).toISOString();
+    // var d = new Date(end.now() - start.now());
 
     // var hh  = d.getHours().toString();
     // var mm  = d.getMinutes().toString();
