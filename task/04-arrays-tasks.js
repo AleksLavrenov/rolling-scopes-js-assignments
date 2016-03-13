@@ -271,7 +271,7 @@ function getMovingSum(arr) {
  * [ "a" ] => []
  */
 function getSecondItems(arr) {
-   throw new Error('Not implemented');
+  throw new Error('Not implemented');
 }
 
 
@@ -342,7 +342,7 @@ function getPositivesCount(arr) {
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
 function sortDigitNamesByNumericOrder(arr) {
-   throw new Error('Not implemented')
+   throw new Error('Not implemented');
 }
 
 /** 
@@ -358,7 +358,10 @@ function sortDigitNamesByNumericOrder(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-   throw new Error('Not implemented');
+  throw new Error('Not implemented')
+  // arr.reduce(function(a,b){
+  //   return a+b;
+  // })
 }
  
 /** 
