@@ -38,10 +38,13 @@ function findElement(arr, value) {
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
 function generateOdds(len) {
-   var arr = Array.apply(null, Array(len)).map(function (_, i) {
-    return 2 * i + 1;
+  var a = 0;
+  var arr = new Array(len+1).join(1).split("").map(function(i) {
+        var result = +i + a;
+        a = result + 1;
+        return result;
   });
-   return arr;
+  return arr;
 }
 
 
@@ -273,8 +276,9 @@ function getMovingSum(arr) {
  * [ "a" ] => []
  */
 function getSecondItems(arr) {
-  throw new Error('Not implemented');
-
+    return arr.filter(function (e, i) {
+        return !(i % 2 == 0);
+    });
 }
 
 
@@ -293,7 +297,10 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-   throw new Error('Not implemented');
+    throw new Error('Not implemented');
+    // return arr.filter(function (e, i, arr) {
+    //     return arr.concat(i);
+    // });
 }
 
 
@@ -346,6 +353,7 @@ function getPositivesCount(arr) {
  */
 function sortDigitNamesByNumericOrder(arr) {
    throw new Error('Not implemented');
+
 }
 
 /** 
@@ -380,7 +388,9 @@ function getItemsSum(arr) {
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
 function getFalsyValuesCount(arr) {
-   throw new Error('Not implemented');
+   return arr.reduce(function(a,b){
+    return a + (b?0:1);
+  },0);
 }
 
 /**
@@ -398,7 +408,9 @@ function getFalsyValuesCount(arr) {
  *    [ true, 0, 1, 'true' ], true => 1
  */
 function findAllOccurences(arr, item) {
-   throw new Error('Not implemented');
+    return arr.reduce(function(a,b) {
+        return a + (b === item ? 1 : 0);
+    }, 0);
 }
 
 /**
@@ -413,7 +425,7 @@ function findAllOccurences(arr, item) {
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
 function toStringList(arr) {
-   throw new Error('Not implemented');
+   return arr.join(',');
 }
 
 
@@ -442,7 +454,9 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  */
 function sortCitiesArray(arr) {
-   throw new Error('Not implemented');
+    return arr.sort(function(a, b) {
+        return a.country == b.country ? (a.city > b.city) : (a.country > b.country);
+    });
 }
 
 /**

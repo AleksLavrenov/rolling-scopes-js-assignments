@@ -210,7 +210,7 @@ function isPrime(n) {
           return false;
         }
       }
-    return n > 1;
+    return true;
 }
 
 /**
