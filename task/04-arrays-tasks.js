@@ -335,9 +335,15 @@ function get3TopItems(arr) {
  *   [ null, 1, 'elephant' ] => 1
  */
 function getPositivesCount(arr) {
-   throw new Error('Not implemented');
+   var newArr = arr.filter(function(e){
+    return Number.isInteger(e);
+   })
+   if(newArr.length == 0){
+    return 0;
+   }
+   return Math.max.apply(null, newArr)
 }
- 
+
 /** 
  * Sorts digit names
  * 
