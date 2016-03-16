@@ -494,7 +494,7 @@ function sortCitiesArray(arr) {
  */
 function getIdentityMatrix(n) {
   var arr = Array(n).fill(0);
-  arr.map(function(x, i){
+  arr.map(function(e, i){
      arr.splice(i, 1, Array(n).fill(0).fill(1, i, i + 1));
      return arr;
   })
@@ -515,7 +515,7 @@ function getIdentityMatrix(n) {
  *     3, 3   => [ 3 ]
  */
 function getIntervalArray(start, end) {
-   throw new Error('Not implemented');
+   return Array(end - start + 1).fill(start).map(function(e, i) {return e + i});
 }
 
 /**
@@ -530,7 +530,9 @@ function getIntervalArray(start, end) {
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
 function distinct(arr) {
-   throw new Error('Not implemented');
+   return Array.from(new Set(arr));
+   // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Set
+   // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/from
 }
 
 /**
@@ -564,7 +566,21 @@ function distinct(arr) {
  *   }
  */
 function group(array, keySelector, valueSelector) {
-   throw new Error('Not implemented');
+
+  var map = new Map();
+
+    array.map(function(x,i){
+      var key = keySelector(x);
+      var value = valueSelector(x);
+
+      if (map.has(key)){
+        map.get(key).push(value);
+      }
+      else{
+        map.set(key, [value]);
+      }
+    })
+  return map;
 }
 
 
@@ -580,7 +596,10 @@ function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-    throw new Error('Not implemented');
+  return arr.reduce(function(a, b){
+    var c = childrenSelector(b);
+    return a.concat(c);
+  }, []);
 }
 
 
@@ -597,7 +616,10 @@ function selectMany(arr, childrenSelector) {
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
 function getElementByIndexes(arr, indexes) {
-    throw new Error('Not implemented');
+    indexes.map(function(a, i){
+      arr = arr[indexes[i]]
+    });
+    return arr;
 }
 
 
