@@ -220,7 +220,12 @@ function getTail(arr, n) {
  *    +'30,31,32,33,34'
  */
 function toCsvText(arr) {
-   throw new Error('Not implemented');
+  return arr.reduce((a, b, index) => {
+      a += b.toString();
+      if (index !== arr.length - 1)
+          a += "\n";
+      return a;
+  }, "");
 }
 
 /**
@@ -297,10 +302,13 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-    throw new Error('Not implemented');
-    // return arr.filter(function (e, i, arr) {
-    //     return arr.concat(i);
-    // });
+
+    return arr.reduce(function(a, b, index){
+        var items = new Array(index + 1);
+        items.fill(b);
+        return a.concat(items);
+    }, []);
+
 }
 
 
@@ -358,8 +366,12 @@ function getPositivesCount(arr) {
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
 function sortDigitNamesByNumericOrder(arr) {
-   throw new Error('Not implemented');
-
+  return arr.sort(function(a,b){
+    var items = {'zero' :0, 'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'seven': 7, 'eight': 8, 'nine': 9};
+    a = items[a];
+    b = items[b];
+    return a > b ? 1: -1;
+  });
 }
 
 /** 
