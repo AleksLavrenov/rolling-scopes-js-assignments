@@ -387,10 +387,7 @@ function sortDigitNamesByNumericOrder(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-  throw new Error('Not implemented')
-  // arr.reduce(function(a,b){
-  //   return a+b;
-  // })
+  return (arr.length == 0) ? 0 : arr.reduce(function(a, b){ return a + b});
 }
  
 /** 
@@ -496,7 +493,12 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]   
  */
 function getIdentityMatrix(n) {
-   throw new Error('Not implemented');
+  var arr = Array(n).fill(0);
+  arr.map(function(x, i){
+     arr.splice(i, 1, Array(n).fill(0).fill(1, i, i + 1));
+     return arr;
+  })
+  return arr;
 }
 
 /**
