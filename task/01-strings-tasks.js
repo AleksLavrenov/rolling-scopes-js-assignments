@@ -302,7 +302,7 @@ function getCardId(value) {
     }
 }
 
-
+// return '♣♦♥♠'.indexOf(value.slice(-1)) * 13 + ...
 
 module.exports = {
     concatenateStrings: concatenateStrings,

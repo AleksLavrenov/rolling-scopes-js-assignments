@@ -93,11 +93,12 @@ function getArrayOfPositives(arr) {
  *    [ 'cat, 'dog', 'raccon' ] => [ 'cat', 'dog', 'racoon' ]
  */
 function getArrayOfStrings(arr) {
-   return arr.filter(function(i){
-    if(typeof i == "string"){
-        return i;
-    }
-   })
+   // return arr.filter(function(i){
+   //  if(typeof i == "string"){
+   //      return i;
+   //  }
+   // })
+   return arr.filter(i => typeof i == 'string'); 
 }
 
 /**
