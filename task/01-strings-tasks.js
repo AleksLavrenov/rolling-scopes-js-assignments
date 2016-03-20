@@ -69,8 +69,9 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-    var str = value.substring(7);
-    return str.substr(0, (str.length - 1));
+    return value.slice(7, -1);
+    // var str = value.substring(7);
+    // return str.substr(0, (str.length - 1));
 }
 
 
@@ -85,7 +86,8 @@ function extractNameFromTemplate(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-    return value.substring(0,1);
+    return value[0];
+    // return value.substring(0,1);
 }
 
 /**
@@ -115,7 +117,8 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-    return new Array(count + 1).join(value);
+    return value.repeat(count);
+    // return new Array(count + 1).join(value);
 }
 
 /**
@@ -146,7 +149,8 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-    return str.replace(/<|>/g, "");
+    return str.slice(1, -1);
+    // return str.replace(/<|>/g, "");
     // return str.replace(/(<\/|>)|</g, "");
 }
 
@@ -225,11 +229,14 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-    return str.replace( /[A-Za-z]/g , function(c) {
-    return String.fromCharCode( c.charCodeAt(0) + ( c.toUpperCase() <= "M" ? 13 : -13 ) );
-  } );
-
+  return str.replace( /[A-Za-z]/g , (c) => 
+                  String.fromCharCode( c.charCodeAt(0) + ( c.toUpperCase() <= "M" ? 13 : -13 )));
+  //   return str.replace( /[A-Za-z]/g , function(c) {
+  //   return String.fromCharCode( c.charCodeAt(0) + ( c.toUpperCase() <= "M" ? 13 : -13 ) );
+  // } );
 }
+
+
 
 /**
  * Returns true if the value is string; otherwise false.
