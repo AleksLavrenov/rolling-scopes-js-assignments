@@ -361,7 +361,7 @@ function getPositivesCount(arr) {
    // return 0;
    //}
    //return Math.max.apply(null, newArr)
-    return arr.reduce((a,b) => b > 0 ? a+1 : b, 0);
+    return arr.reduce((a, b) => b > 0 ? ++a : a, 0);
 }
 
 /** 
@@ -378,12 +378,18 @@ function getPositivesCount(arr) {
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
 function sortDigitNamesByNumericOrder(arr) {
-  return arr.sort(function(a,b){
-    var items = {'zero' :0, 'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'seven': 7, 'eight': 8, 'nine': 9};
-    a = items[a];
-    b = items[b];
-    return a > b ? 1: -1;
-  });
+  //  var items = {'zero' :0, 'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'seven': 7, 'eight': 8, 'nine': 9};
+  //return arr.sort(function(a,b){
+  //  a = items[a];
+  //  b = items[b];
+  //  return a > b ? 1: -1;
+  //});
+  //
+  //  return arr.sort((a,b) => items[a] - items[b]);
+
+    const items = 'zero one two three four five six seven eight nine';
+    return arr.sort((a,b) => items.indexOf(a) - items.indexOf(b));
+
 }
 
 /** 
@@ -399,7 +405,7 @@ function sortDigitNamesByNumericOrder(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-  return (arr.length == 0) ? 0 : arr.reduce(function(a, b){ return a + b});
+  return arr.reduce((a, b) => a + b, 0);
 }
  
 /** 
@@ -452,7 +458,8 @@ function findAllOccurences(arr, item) {
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
 function toStringList(arr) {
-   return arr.join(',');
+   //return arr.join(',');
+    return arr.toString();
 }
 
 
@@ -508,12 +515,15 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]   
  */
 function getIdentityMatrix(n) {
-  var arr = Array(n).fill(0);
-  arr.map(function(e, i){
-     arr.splice(i, 1, Array(n).fill(0).fill(1, i, i + 1));
-     return arr;
-  })
-  return arr;
+  //var arr = Array(n).fill(0);
+  //arr.map(function(e, i){
+  //   arr.splice(i, 1, Array(n).fill(0).fill(1, i, i + 1));
+  //   return arr;
+  //})
+  //return arr;
+
+    return Array.from({length:n}, (a, i) => Array.from({length:n}, (b, j) => (i == j) ? 1 : 0));
+
 }
 
 /**
@@ -530,7 +540,8 @@ function getIdentityMatrix(n) {
  *     3, 3   => [ 3 ]
  */
 function getIntervalArray(start, end) {
-   return Array(end - start + 1).fill(start).map(function(e, i) {return e + i});
+   //return Array(end - start + 1).fill(start).map(function(e, i) {return e + i});
+    return Array.from({length: end - start +1}, (v, k) => start + k);
 }
 
 /**
@@ -611,10 +622,11 @@ function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-  return arr.reduce(function(a, b){
-    var c = childrenSelector(b);
-    return a.concat(c);
-  }, []);
+  //return arr.reduce(function(a, b){
+  //  var c = childrenSelector(b);
+  //  return a.concat(c);
+  //}, []);
+    return arr.reduce((a, b) => a.concat(childrenSelector(b)),[]);
 }
 
 
