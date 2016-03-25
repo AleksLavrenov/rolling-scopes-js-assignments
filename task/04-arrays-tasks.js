@@ -38,13 +38,14 @@ function findElement(arr, value) {
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
 function generateOdds(len) {
-  var a = 0;
-  var arr = new Array(len+1).join(1).split("").map(function(i) {
-        var result = +i + a;
-        a = result + 1;
-        return result;
-  });
-  return arr;
+  //var a = 0;
+  //var arr = new Array(len+1).join(1).split("").map(function(i) {
+  //      var result = +i + a;
+  //      a = result + 1;
+  //      return result;
+  //});
+  //return arr;
+    return Array.from({ length: len }, (v, k) => k * 2 + 1);
 }
 
 
@@ -115,11 +116,12 @@ function getArrayOfStrings(arr) {
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
 function removeFalsyValues(arr) {
-   return arr.filter(function(i){
-    if(typeof i){
-        return i;
-    }
-   })
+   //return arr.filter(function(i){
+   // if(typeof i){
+   //     return i;
+   // }
+   //})
+    return arr.filter(v => v);
 }
 
 /**
@@ -150,9 +152,10 @@ function getUpperCaseStrings(arr) {
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
-  return arr.map(function(i){
-    return i.length;
-  })
+  //return arr.map(function(i){
+  //  return i.length;
+  //})
+    return Array.from(arr, i => i.length);
 }
 
 /**
@@ -221,12 +224,13 @@ function getTail(arr, n) {
  *    +'30,31,32,33,34'
  */
 function toCsvText(arr) {
-  return arr.reduce((a, b, index) => {
-      a += b.toString();
-      if (index !== arr.length - 1)
-          a += "\n";
-      return a;
-  }, "");
+  //return arr.reduce((a, b, index) => {
+    //    a += b.toString();
+    //    if (index !== arr.length - 1)
+    //        a += "\n";
+    //    return a;
+    //}, "");
+    return arr.join('\n');
 }
 
 /**

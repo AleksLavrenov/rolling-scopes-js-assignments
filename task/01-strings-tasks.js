@@ -285,24 +285,25 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    var str = "A234567891JQK";
-    var a = str.indexOf(value[0]);
-    var b = value[value.length - 1].charCodeAt();
-    switch (b) {
-       case 9827:
-          return a;
-       case 9830:
-          return a += 13;
-       case 9829:
-          return a += 26;
-       case 9824:
-          return a += 39;
-       default:
-          return false;
-    }
+    //var str = "A234567891JQK";
+    //var a = str.indexOf(value[0]);
+    //var b = value[value.length - 1].charCodeAt();
+    //switch (b) {
+    //   case 9827:
+    //      return a;
+    //   case 9830:
+    //      return a += 13;
+    //   case 9829:
+    //      return a += 26;
+    //   case 9824:
+    //      return a += 39;
+    //   default:
+    //      return false;
+    //}
+    return "A234567891JQK".indexOf(value.slice(0,1)) + "♣♦♥♠".indexOf(value.slice(-1))* 13;
 }
 
-// return '♣♦♥♠'.indexOf(value.slice(-1)) * 13 + ...
+
 
 module.exports = {
     concatenateStrings: concatenateStrings,
