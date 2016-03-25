@@ -266,12 +266,14 @@ function toArrayOfSquares(arr) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
 function getMovingSum(arr) {
-    var a = 0;
-    return arr.map(function (i) {
-        var result = i + a;
-        a = result;
-        return result;
-    });
+    //var a = 0;
+    //return arr.map(function (i) {
+    //    var result = i + a;
+    //    a = result;
+    //    return result;
+    //});
+    var sum = 0;
+    return arr.map(x => sum += x);
 }
 
 /**
@@ -308,12 +310,13 @@ function getSecondItems(arr) {
  */
 function propagateItemsByPositionIndex(arr) {
 
-    return arr.reduce(function(a, b, index){
-        var items = new Array(index + 1);
-        items.fill(b);
-        return a.concat(items);
-    }, []);
+    //return arr.reduce(function(a, b, index){
+    //    var items = new Array(index + 1);
+    //    items.fill(b);
+    //    return a.concat(items);
+    //}, []);
 
+    return arr.reduce((a,b,index) => a.concat((new Array(index + 1)).fill(b)),[]);
 }
 
 
@@ -331,7 +334,10 @@ function propagateItemsByPositionIndex(arr) {
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
 function get3TopItems(arr) {
-   return arr.slice(-3).reverse();
+   //return arr.slice(-3).reverse();
+    return arr.sort((a,b) => b - a).slice(0,3);
+
+
 }
  
  
@@ -348,13 +354,14 @@ function get3TopItems(arr) {
  *   [ null, 1, 'elephant' ] => 1
  */
 function getPositivesCount(arr) {
-   var newArr = arr.filter(function(e){
-    return Number.isInteger(e);
-   })
-   if(newArr.length == 0){
-    return 0;
-   }
-   return Math.max.apply(null, newArr)
+   //var newArr = arr.filter(function(e){
+   // return Number.isInteger(e);
+   //})
+   //if(newArr.length == 0){
+   // return 0;
+   //}
+   //return Math.max.apply(null, newArr)
+    return arr.reduce((a,b) => b > 0 ? a+1 : b, 0);
 }
 
 /** 
