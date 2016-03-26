@@ -488,11 +488,7 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  */
 function sortCitiesArray(arr) {
-    var fields = ['country', 'city'];
-    return arr.sort((a, b) => {
-        var ind = fields.findIndex((field) => a[field].localeCompare(b[field]));
-        return ind >= 0 ? a[fields[ind]].localeCompare(b[fields[ind]]) : 0;
-    });
+ return arr.sort((a, b) => a.country.localeCompare(b.country) || a.city.localeCompare(b.city));
 }
 
 
@@ -669,7 +665,13 @@ function getElementByIndexes(arr, indexes) {
  * 
  */
 function swapHeadAndTail(arr) {
-    throw new Error('Not implemented');
+    var isOdd = arr.length % 2 !== 0;
+    var middle = parseInt(arr.length / 2, 10) + (isOdd ? 0 : -1);
+    return arr.map((v, i) => {
+            if(middle - i > 0 || (middle - i == 0 && !isOdd)) return arr[middle + i +1]
+            else if(middle - i < 0) return arr[i - middle - 1]
+            else return v
+        });
 }
 
 
