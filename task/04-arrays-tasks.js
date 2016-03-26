@@ -639,10 +639,15 @@ function selectMany(arr, childrenSelector) {
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
 function getElementByIndexes(arr, indexes) {
-    indexes.map(function(a, i){
-      arr = arr[indexes[i]]
-    });
-    return arr;
+    return indexes.reduce((a, b, i) => {
+
+        if (i != indexes.length -1) {arr = arr[b];}
+
+        else {return arr[b];}
+
+        return null;
+
+    }, null);
 }
 
 
