@@ -72,7 +72,12 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-    throw new Error('Not implemented');
+    var a = n1, b = n1;
+    for (var i = 0; i < (n2-n1); i++){
+        b += a + 1;
+        a++;
+    }
+    return b
 }
 
 
