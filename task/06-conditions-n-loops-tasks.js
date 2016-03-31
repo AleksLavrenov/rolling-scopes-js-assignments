@@ -96,7 +96,9 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a,b,c) {
-    throw new Error('Not implemented');
+    let max = Math.max(a, b, c),
+        sum = a + b + c - max;
+    return max < sum;
 }
 
 
